@@ -9,4 +9,10 @@ class Store < ApplicationRecord
              lon: longitude, lat: latitude, dist: distance_in_km * 1000)
     )
   }
+
+  def ratings_average
+    return 0 if ratings.empty?
+
+    (ratings.sum(:value) / ratings.count).to_i
+  end
 end
